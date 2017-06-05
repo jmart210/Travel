@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <meta charset="utf-8">
+        <title>Main</title>
+    </head>
+    <body>
+        <main>
+            {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            <section>
+                <form action="{% url 'travel:register'%}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Name">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password **********">
+                    <input type="password" name="confirmpass" placeholder="Confirm PW">
+                    <button type="submit" name="choose" value="register" class="btn">Register</button>
+                </form>
+            </section>
+            <section>
+                <form action="{% url 'travel:login' %}" method="post">
+                    {% csrf_token %}
+                    <input type="username" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <button type="submit" name="choose" vlue = "login" class="btn">Login</button>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
